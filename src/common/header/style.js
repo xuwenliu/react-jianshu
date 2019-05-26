@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:07:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:14:32
+ * @LastEditTime: 2019-05-26 20:30:52
  */
 import styled from 'styled-components';
 import logoPic from '../../static/img/logo.png';
@@ -51,7 +51,7 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
     position:relative;
     float:left;
-    .iconfont{
+    .zoom{
         position:absolute;
         right:5px;
         bottom:5px;
@@ -124,6 +124,14 @@ export const SearchInfoSwitch = styled.span`
     cursor:pointer;
     :hover{
         color: #2f2f2f;
+    }
+    .spin{
+        display:block;
+        float:left;
+        font-size:12px;
+        margin-right:2px;
+        transition:all .2s ease-in;
+        transform-origin:center center;
     }
 `
 export const SearchInfoList = styled.div`

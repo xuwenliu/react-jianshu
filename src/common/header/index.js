@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:02:11
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:13:34
+ * @LastEditTime: 2019-05-26 20:39:57
  */
 import React from "react";
 import { connect } from "react-redux";
@@ -29,19 +29,30 @@ import {
 
 class Header extends React.Component {
     getListArea = () => {
-        const { focused, mouseIn, list, page, totalPage, handleMouseEnter,handleMouseLeave,handleChangePage} = this.props;
+        const {
+            focused,
+            mouseIn,
+            list,
+            page,
+            totalPage,
+            handleMouseEnter,
+            handleMouseLeave,
+            handleChangePage
+        } = this.props;
         const jsList = list.toJS();
         let pageList = [];
         if (jsList.length) {
             for (let i = (page - 1) * 10; i < page * 10; i++) {
                 if (jsList[i]) {
                     pageList.push(
-                        <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
+                        <SearchInfoItem key={jsList[i]}>
+                            {jsList[i]}
+                        </SearchInfoItem>
                     );
                 }
             }
         }
-       
+
         if (focused || mouseIn) {
             return (
                 <SearchInfo
@@ -50,7 +61,19 @@ class Header extends React.Component {
                 >
                     <SearchInfoTitle>
                         热门搜索
-                        <SearchInfoSwitch onClick={() => handleChangePage(page,totalPage)}>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch
+                            onClick={() =>
+                                handleChangePage(page, totalPage, this.spinIcon)
+                            }
+                        >
+                            <i
+                                ref={icon => (this.spinIcon = icon)}
+                                className="iconfont spin"
+                            >
+                                &#xe851;
+                            </i>
+                            换一批
+                        </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>{pageList}</SearchInfoList>
                 </SearchInfo>
@@ -61,6 +84,8 @@ class Header extends React.Component {
     };
 
     render() {
+        const { handleFocus, handleBlur, list, focused } = this.props;
+
         return (
             <HeaderWrapper>
                 <Logo />
@@ -73,21 +98,21 @@ class Header extends React.Component {
                     </NavItem>
                     <SearchWrapper>
                         <CSSTransition
-                            in={this.props.focused}
+                            in={focused}
                             timeout={200}
                             classNames="slide"
                         >
                             <NavSearch
-                                onFocus={this.props.handleFocus}
-                                onBlur={this.props.handleBlur}
-                                className={this.props.focused ? "focused" : ""}
+                                onFocus={() => handleFocus(list)}
+                                onBlur={handleBlur}
+                                className={focused ? "focused" : ""}
                             />
                         </CSSTransition>
                         <i
                             className={
-                                this.props.focused
-                                    ? "focused iconfont"
-                                    : "iconfont"
+                                focused
+                                    ? "focused iconfont zoom"
+                                    : "iconfont zoom"
                             }
                         >
                             &#xe614;
@@ -111,12 +136,12 @@ const mapStateToProps = state => ({
     mouseIn: state.getIn(["headerReducer", "mouseIn"]),
     list: state.getIn(["headerReducer", "list"]),
     page: state.getIn(["headerReducer", "page"]),
-    totalPage: state.getIn(["headerReducer", "totalPage"]),
+    totalPage: state.getIn(["headerReducer", "totalPage"])
 });
 
 const mapDispatchToProps = dispatch => ({
-    handleFocus() {
-        dispatch(actionCreator.getList());
+    handleFocus(list) {
+        list.size === 0 && dispatch(actionCreator.getList());
         dispatch(actionCreator.searchFocus());
     },
     handleBlur() {
@@ -128,14 +153,21 @@ const mapDispatchToProps = dispatch => ({
     handleMouseLeave() {
         dispatch(actionCreator.mouseLeave());
     },
-    handleChangePage(page, totalPage) {
+    handleChangePage(page, totalPage, spin) {
+        let originAngle = spin.style.transform.replace(/[\D]/gi, ""); //360 空
+        console.log(originAngle);
+        if (originAngle) {
+            originAngle *= 1;
+        } else {
+            originAngle = 0;
+        }
+        spin.style.transform = `rotate(${originAngle + 360}deg)`;
         if (page < totalPage) {
             page += 1;
         } else {
             page = 1;
         }
         dispatch(actionCreator.changePage(page));
-
     }
 });
 
