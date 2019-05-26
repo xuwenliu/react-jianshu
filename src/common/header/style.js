@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:07:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 19:09:36
+ * @LastEditTime: 2019-05-26 20:14:32
  */
 import styled from 'styled-components';
 import logoPic from '../../static/img/logo.png';
@@ -121,6 +121,10 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.span`
     float:right;
     font-size:13px;
+    cursor:pointer;
+    :hover{
+        color: #2f2f2f;
+    }
 `
 export const SearchInfoList = styled.div`
     overflow:hidden;

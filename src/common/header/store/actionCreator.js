@@ -3,11 +3,19 @@
  * @Author: xwl
  * @Date: 2019-05-26 11:09:10
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 19:29:48
+ * @LastEditTime: 2019-05-26 20:05:33
  */
 import types from './actionTypes';
 import axios from 'axios';
 import { fromJS } from 'immutable';
+
+const changeList = (data) => ({
+    type: types.CHANGE_LIST,
+    data: fromJS(data),
+    totalPage: Math.ceil(data.length / 10)
+})
+
+
 
 const searchFocus = () => ({
     type:types.SEARCH_FOCUS
@@ -17,9 +25,15 @@ const searchBlur = () => ({
     type:types.SEARCH_BLUR
 })
 
-const changeList = (data) => ({
-    type: types.CHANGE_LIST,
-    data: fromJS(data)
+const mouseEnter = () => ({
+    type:types.MOUSE_ENTER
+})
+const mouseLeave = () => ({
+    type:types.MOUSE_LEAVE
+})
+const changePage = (page) => ({
+    type: types.CHANGE_PAGE,
+    page
 })
 
 const getList = () => {
@@ -37,5 +51,8 @@ const getList = () => {
 export default {
     searchFocus,
     searchBlur,
-    getList
+    getList,
+    mouseEnter,
+    mouseLeave,
+    changePage
 }

@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:02:11
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 19:32:53
+ * @LastEditTime: 2019-05-26 20:13:34
  */
 import React from "react";
 import { connect } from "react-redux";
@@ -27,26 +27,32 @@ import {
     SearchInfoList
 } from "./style";
 
-
 class Header extends React.Component {
-    
     getListArea = () => {
-        const { focused, list } = this.props;
-        if (focused) {
+        const { focused, mouseIn, list, page, totalPage, handleMouseEnter,handleMouseLeave,handleChangePage} = this.props;
+        const jsList = list.toJS();
+        let pageList = [];
+        if (jsList.length) {
+            for (let i = (page - 1) * 10; i < page * 10; i++) {
+                if (jsList[i]) {
+                    pageList.push(
+                        <SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>
+                    );
+                }
+            }
+        }
+       
+        if (focused || mouseIn) {
             return (
-                <SearchInfo>
+                <SearchInfo
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
                     <SearchInfoTitle>
                         热门搜索
-                        <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => handleChangePage(page,totalPage)}>换一批</SearchInfoSwitch>
                     </SearchInfoTitle>
-                    <SearchInfoList>
-                        {
-                            list.map((item,index) => 
-                                <SearchInfoItem key={index}>{item}</SearchInfoItem>
-                            )
-                        }
-                       
-                    </SearchInfoList>
+                    <SearchInfoList>{pageList}</SearchInfoList>
                 </SearchInfo>
             );
         } else {
@@ -102,7 +108,10 @@ class Header extends React.Component {
 }
 const mapStateToProps = state => ({
     focused: state.getIn(["headerReducer", "focused"]),
-    list:state.getIn(["headerReducer", "list"]),
+    mouseIn: state.getIn(["headerReducer", "mouseIn"]),
+    list: state.getIn(["headerReducer", "list"]),
+    page: state.getIn(["headerReducer", "page"]),
+    totalPage: state.getIn(["headerReducer", "totalPage"]),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -112,6 +121,21 @@ const mapDispatchToProps = dispatch => ({
     },
     handleBlur() {
         dispatch(actionCreator.searchBlur());
+    },
+    handleMouseEnter() {
+        dispatch(actionCreator.mouseEnter());
+    },
+    handleMouseLeave() {
+        dispatch(actionCreator.mouseLeave());
+    },
+    handleChangePage(page, totalPage) {
+        if (page < totalPage) {
+            page += 1;
+        } else {
+            page = 1;
+        }
+        dispatch(actionCreator.changePage(page));
+
     }
 });
 
