@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:07:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 18:49:24
+ * @LastEditTime: 2019-05-26 19:09:36
  */
 import styled from 'styled-components';
 import logoPic from '../../static/img/logo.png';
@@ -108,8 +108,42 @@ export const SearchInfo = styled.div`
     left:0;
     top:56px;
     width:240px;
-    padding:0;
+    padding:0 20px;
+    box-shadow:0 0 8px rgba(0,0,0,.2);
 `
+export const SearchInfoTitle = styled.div`
+    font-size:14px;
+    margin-top:20px;
+    margin-bottom:15px;
+    color:#969696;
+    line-height:20px;
+`
+export const SearchInfoSwitch = styled.span`
+    float:right;
+    font-size:13px;
+`
+export const SearchInfoList = styled.div`
+    overflow:hidden;
+`
+export const SearchInfoItem = styled.a`
+    font-size:12px;
+    line-height:20px;
+    padding:0 5px;
+    color:#787878;
+    border:1px solid #ddd;
+    border-radius:3px;
+    display:block;
+    float:left;
+    margin-right:10px;
+    margin-bottom:15px;
+    cursor:pointer;
+    :hover{
+        color: #333;
+        border-color: #b4b4b4;
+    }
+`
+
+
 
 export const Addition = styled.div`
     position:absolute;
