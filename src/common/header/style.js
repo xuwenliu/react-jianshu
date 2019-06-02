@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:07:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:30:52
+ * @LastEditTime: 2019-06-02 09:39:56
  */
 import styled from 'styled-components';
 import logoPic from '../../static/img/logo.png';
@@ -110,6 +110,7 @@ export const SearchInfo = styled.div`
     width:240px;
     padding:0 20px;
     box-shadow:0 0 8px rgba(0,0,0,.2);
+    background:#fff;
 `
 export const SearchInfoTitle = styled.div`
     font-size:14px;
