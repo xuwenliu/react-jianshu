@@ -3,15 +3,14 @@
  * @Author: xwl
  * @Date: 2019-05-26 11:09:10
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:05:33
+ * @LastEditTime: 2019-06-02 11:03:51
  */
 import types from './actionTypes';
 import axios from 'axios';
-import { fromJS } from 'immutable';
 
 const changeList = (data) => ({
     type: types.CHANGE_LIST,
-    data: fromJS(data),
+    data,
     totalPage: Math.ceil(data.length / 10)
 })
 

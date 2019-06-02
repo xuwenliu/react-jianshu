@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 10:34:06
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:09:23
+ * @LastEditTime: 2019-06-02 11:04:25
  */
 import { fromJS } from "immutable";
 
@@ -25,7 +25,7 @@ export default (state = defaultState, action) => {
             return state.set("focused", false);
         case types.CHANGE_LIST:
             return state.merge({
-                list: action.data,
+                list: fromJS(action.data),
                 totalPage: action.totalPage
             });
         case types.MOUSE_ENTER:
