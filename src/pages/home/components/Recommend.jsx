@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 09:55:56
+ * @LastEditTime: 2019-06-02 19:28:09
  */
 import React from 'react';
 import { connect } from "react-redux";
@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import { RecommendWrapper,RecommendItem } from '../style';
 
 
-class Recommend extends React.Component{
+class Recommend extends React.PureComponent{
     render() {
         const { list } = this.props;
         return (

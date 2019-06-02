@@ -3,21 +3,23 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 11:26:09
+ * @LastEditTime: 2019-06-02 19:56:31
  */
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import { ListItem, ListInfo, LoadMore } from "../style";
 import { actionCreator } from "../store/index";
 
-class List extends React.Component {
+class List extends React.PureComponent {
     render() {
         const { list,page,getMoreList } = this.props;
         return (
             <div>
                 {list.map((item,index) => {
                     return (
+                        <Link to="/detail">
                         <ListItem key={index}>
                             <img
                                 className="pic"
@@ -28,7 +30,8 @@ class List extends React.Component {
                                 <h3 className="title">{item.get("title")}</h3>
                                 <p className="desc">{item.get("desc")}</p>
                             </ListInfo>
-                        </ListItem>
+                            </ListItem>
+                            </Link>
                     );
                 })}
                 <LoadMore onClick={() => getMoreList(page)}>阅读更多</LoadMore>

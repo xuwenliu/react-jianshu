@@ -3,18 +3,18 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 10:05:49
+ * @LastEditTime: 2019-06-02 19:29:18
  */
 import React from 'react';
 import { WriterWrapper } from '../style';
 
 
-class Witer extends React.Component{
+class Writer extends React.PureComponent{
     render() {
         return (
-            <WriterWrapper>Witer</WriterWrapper>
+            <WriterWrapper>Writer</WriterWrapper>
         )
     }
 }
 
-export default Witer;
+export default Writer;

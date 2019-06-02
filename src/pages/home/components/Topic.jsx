@@ -3,14 +3,14 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 10:09:48
+ * @LastEditTime: 2019-06-02 19:28:14
  */
 import React from "react";
 import { connect } from "react-redux";
 
 import { TopicWrapper, TopicItem } from "../style";
 
-class Topic extends React.Component {
+class Topic extends React.PureComponent {
 
     
     render() {

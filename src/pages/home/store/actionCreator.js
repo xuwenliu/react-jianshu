@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 11:09:10
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 11:23:34
+ * @LastEditTime: 2019-06-02 19:18:42
  */
 import types from './actionTypes';
 import axios from 'axios';
@@ -43,7 +43,13 @@ const getMoreList = (page) => {
     }
 }
 
+const toggleTopShow = (show) => ({
+    type: types.TOGGLE_SCROLL_TOP,
+    show
+})
+
 export default {
     getHomeData,
-    getMoreList
+    getMoreList,
+    toggleTopShow
 }

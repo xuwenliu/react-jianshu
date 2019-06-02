@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 10:34:06
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 11:24:43
+ * @LastEditTime: 2019-06-02 19:24:17
  */
 import { fromJS } from "immutable";
 
@@ -14,6 +14,7 @@ const defaultState = fromJS({
     articleList: [],
     recommendList: [],
     articlePage: 1,
+    showScroll: false,
 });
 
 export default (state = defaultState, action) => {
@@ -31,7 +32,8 @@ export default (state = defaultState, action) => {
                 articleList: state.get('articleList').concat(fromJS(action.data)),
                 articlePage: action.page
             });
-        
+        case types.TOGGLE_SCROLL_TOP:
+            return state.set('showScroll', action.show)
         default:
             return state;
     }

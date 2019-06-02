@@ -3,11 +3,11 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 10:25:23
+ * @LastEditTime: 2019-06-02 19:27:45
  */
 import React from 'react';
 import { connect } from 'react-redux';
-import { HomeWrapper,HomeLeft,HomeRight } from './style';
+import { HomeWrapper,HomeLeft,HomeRight,BackTop } from './style';
 import Topic from './components/Topic';
 import Recommend from './components/Recommend';
 import List from './components/List';
@@ -17,12 +17,26 @@ import { actionCreator } from "./store/index";
 
 
 
-class Home extends React.Component{
+class Home extends React.PureComponent{
     componentDidMount() {
         this.props.getHomeData();
+        this.bindEvents();
+    }
+
+    handleScrollTop(){
+        window.scroll(0, 0);
+    }
+
+    bindEvents() {
+        window.addEventListener('scroll',this.props.changeScrollTopShow)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll',this.props.changeScrollTopShow)
     }
 
     render() {
+        const { showScroll } = this.props;
         return (
             <HomeWrapper>
                 <HomeLeft>
@@ -34,13 +48,29 @@ class Home extends React.Component{
                     <Recommend />
                     <Writer />
                 </HomeRight>
+                {
+                    showScroll ? <BackTop onClick={this.handleScrollTop}>返回顶部</BackTop> : null
+                }
+                
             </HomeWrapper>
         )
     }
 }
+const mapStateToProps = (state) => ({
+    showScroll:state.getIn(['homeReducer','showScroll'])
+})
 const mapDispatchToProps = (dispatch) => ({
     getHomeData() {
         dispatch(actionCreator.getHomeData());
+    },
+    changeScrollTopShow() {
+        if (document.documentElement.scrollTop > 100) {
+            dispatch(actionCreator.toggleTopShow(true));
+        } else {
+            dispatch(actionCreator.toggleTopShow(false));
+            
+            
+        }
     }
 })
-export default connect(null,mapDispatchToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
