@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:37:02
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 19:10:04
+ * @LastEditTime: 2019-06-03 10:05:05
  */
 import styled from 'styled-components';
 
@@ -111,7 +111,7 @@ export const WriterWrapper= styled.div`
     border-radius: 10px;
 `
 
-//跟多
+//更多
 export const LoadMore= styled.div`
     width:100%;
     height:40px;
