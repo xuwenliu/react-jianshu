@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: xwl
+ * @Date: 2019-05-26 08:25:07
+ * @LastEditors: xwl
+ * @LastEditTime: 2019-06-03 09:19:21
+ -->
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +73,63 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### 项目目录结构
+    public
+        |——api 数据模拟
+	src
+		|——common 公共组件
+			|——header
+				|——index.js    header组件
+				|——style.js    header样式
+				|——store  	 首页相关数据
+					|——actionCreator.js  header的actionCreator
+					|——actionTypes.js    header的actionTypes
+					|——reducer.js        header的reducer
+					|——index.js          导出reducer，actionCreator，types 上面三个
+		|——pages		   页面
+			|——home		首页
+				|——index.js    首页组件
+				|——style.js    首页样式
+				|——components  首页小组件
+				|——store  	 首页相关数据
+					|——actionCreator.js  首页的actionCreator
+					|——actionTypes.js  首页的actionTypes
+					|——reducer.js  首页的reducer
+					|——index.js  导出reducer，actionCreator，types 上面三个
+
+		|——static		  静态资源
+			|——iconfont    字体
+			|——img  	   图片
+		|——store
+			|——index.js    创建最外层store和使用中间件
+			|——reducer.js  创建所有的reducer 
+		|——App.js   根组件
+		|——index.js 入口js文件
+		|——style.js 全局公共（reset.css）样式定义
+
+
+#### 这一块就是基本结构
+```
+|——home		首页
+	|——index.js    首页组件
+	|——style.js    首页样式
+	|——components  首页小组件
+	|——store  	 首页相关数据
+		|——actionCreator.js  首页的actionCreator
+		|——actionTypes.js  首页的actionTypes
+		|——reducer.js  首页的reducer
+		|——index.js  导出reducer，actionCreator，types 上面三个
+```
+
+### 项目主要使用的技术 详见package.json
+1. react react-dom 基础库
+2. react-transition-group 动画库   https://reactcommunity.org/react-transition-group/
+3. styled-components 样式组件库    https://www.styled-components.com/docs
+4. axios
+5. redux react-redux
+6. immutable redux-immutable redux的数据不可变管理库   https://immutable-js.github.io/immutable-js/docs/#/
+7. redux-thunk redux的reducer 异步请求 处理中间件 https://github.com/reduxjs/redux-thunk
+
+### 组件为提升性能 采用了 PureComponent定义组件配合redux-immutable使用
+
