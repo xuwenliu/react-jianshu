@@ -1,9 +1,9 @@
 /*
- * @Description: home的reducer
+ * @Description: home-reducer
  * @Author: xwl
  * @Date: 2019-05-26 10:34:06
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 19:24:17
+ * @LastEditTime: 2019-06-03 14:12:26
  */
 import { fromJS } from "immutable";
 

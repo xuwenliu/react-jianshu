@@ -3,13 +3,14 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:07:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 19:57:58
+ * @LastEditTime: 2019-06-03 13:09:21
  */
 import styled from 'styled-components';
 import logoPic from '../../static/img/logo.png';
 
 export const HeaderWrapper = styled.div`
     position:relative;
+    z-index:1;
     height:56px;
     border-bottom:1px solid #f0f0f0;
 `

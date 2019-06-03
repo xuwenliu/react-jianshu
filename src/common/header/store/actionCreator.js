@@ -1,9 +1,9 @@
 /*
- * @Description: 创建action
+ * @Description: header-action
  * @Author: xwl
  * @Date: 2019-05-26 11:09:10
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 11:03:51
+ * @LastEditTime: 2019-06-03 14:13:16
  */
 import types from './actionTypes';
 import axios from 'axios';

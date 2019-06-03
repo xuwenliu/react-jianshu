@@ -3,14 +3,15 @@
  * @Author: xwl
  * @Date: 2019-05-26 09:02:11
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-02 19:59:03
+ * @LastEditTime: 2019-06-03 14:07:02
  */
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 import { actionCreator } from "./store/index";
+import { actionCreator as loginActionCreator } from "../../pages/login/store";
 
 import {
     HeaderWrapper,
@@ -85,18 +86,34 @@ class Header extends React.Component {
     };
 
     render() {
-        const { handleFocus, handleBlur, list, focused } = this.props;
+        const {
+            handleFocus,
+            handleBlur,
+            list,
+            focused,
+            login,
+            logOut
+        } = this.props;
 
         return (
             <HeaderWrapper>
                 <Link to="/">
                     <Logo />
                 </Link>
-                
+
                 <Nav>
                     <NavItem className="left active">首页</NavItem>
                     <NavItem className="left">下载APP</NavItem>
-                    <NavItem className="right">登录</NavItem>
+                    {login ? (
+                        <NavItem onClick={logOut} className="right">
+                            退出
+                        </NavItem>
+                    ) : (
+                        <Link to="/login">
+                            <NavItem className="right">登录</NavItem>
+                        </Link>
+                    )}
+
                     <NavItem className="right">
                         <i className="iconfont">&#xe636;</i>
                     </NavItem>
@@ -125,10 +142,13 @@ class Header extends React.Component {
                     </SearchWrapper>
                 </Nav>
                 <Addition>
-                    <Button className="writting">
-                        <i className="iconfont">&#xe615;</i>
-                        写文章
-                    </Button>
+                    <Link to="/write">
+                        <Button className="writting">
+                            <i className="iconfont">&#xe615;</i>
+                            写文章
+                        </Button>
+                    </Link>
+
                     <Button className="reg">注册</Button>
                 </Addition>
             </HeaderWrapper>
@@ -140,7 +160,8 @@ const mapStateToProps = state => ({
     mouseIn: state.getIn(["headerReducer", "mouseIn"]),
     list: state.getIn(["headerReducer", "list"]),
     page: state.getIn(["headerReducer", "page"]),
-    totalPage: state.getIn(["headerReducer", "totalPage"])
+    totalPage: state.getIn(["headerReducer", "totalPage"]),
+    login: state.getIn(["loginReducer", "login"])
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -172,6 +193,9 @@ const mapDispatchToProps = dispatch => ({
             page = 1;
         }
         dispatch(actionCreator.changePage(page));
+    },
+    logOut() {
+        dispatch(loginActionCreator.userLogout());
     }
 });
 

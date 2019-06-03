@@ -1,9 +1,9 @@
 /*
- * @Description: 创建actionType
+ * @Description: header-actionType
  * @Author: xwl
  * @Date: 2019-05-26 11:14:35
  * @LastEditors: xwl
- * @LastEditTime: 2019-05-26 20:05:08
+ * @LastEditTime: 2019-06-03 14:13:24
  */
 const SEARCH_FOCUS = "header/SEARCH_FOCUS";
 const SEARCH_BLUR = "header/SEARCH_BLUR";
