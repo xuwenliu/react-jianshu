@@ -3,9 +3,10 @@
  * @Author: xwl
  * @Date: 2019-06-02 08:33:39
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-03 10:51:45
+ * @LastEditTime: 2019-06-04 14:58:02
  */
 import React from "react";
+import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 
 import { DetailWrapper, Header, Content } from "./style";
@@ -40,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Detail);
+)(withRouter(Detail));

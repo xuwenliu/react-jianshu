@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 08:25:07
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-03 09:19:21
+ * @LastEditTime: 2019-06-04 15:00:17
  -->
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -130,6 +130,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 5. redux react-redux
 6. immutable redux-immutable redux的数据不可变管理库   https://immutable-js.github.io/immutable-js/docs/#/
 7. redux-thunk redux的reducer 异步请求 处理中间件 https://github.com/reduxjs/redux-thunk
+7. react-loadable 异步组件加载  https://github.com/jamiebuilds/react-loadable 
+    详见 detail 要获取路由参数需要使用withRouter
 
 ### 组件为提升性能 采用了 PureComponent定义组件配合redux-immutable使用
 

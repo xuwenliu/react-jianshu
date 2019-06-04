@@ -3,7 +3,7 @@
  * @Author: xwl
  * @Date: 2019-05-26 08:25:07
  * @LastEditors: xwl
- * @LastEditTime: 2019-06-03 14:05:57
+ * @LastEditTime: 2019-06-04 14:55:16
  */
 
 import React from "react";
@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 
 import Home from "./pages/home";
-import Detail from "./pages/detail";
+import Detail from "./pages/detail/loadable"; //详情异步组件
 import Login from "./pages/login";
 import Write from "./pages/write";
 
