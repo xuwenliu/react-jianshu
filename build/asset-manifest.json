@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/react-jianshu/static/js/main.18aff5b8.chunk.js",
+    "main.js.map": "/react-jianshu/static/js/main.18aff5b8.chunk.js.map",
+    "runtime~main.js": "/react-jianshu/static/js/runtime~main.105e7f42.js",
+    "runtime~main.js.map": "/react-jianshu/static/js/runtime~main.105e7f42.js.map",
+    "static/js/2.4dc66202.chunk.js": "/react-jianshu/static/js/2.4dc66202.chunk.js",
+    "static/js/2.4dc66202.chunk.js.map": "/react-jianshu/static/js/2.4dc66202.chunk.js.map",
+    "static/js/3.9e4d3a13.chunk.js": "/react-jianshu/static/js/3.9e4d3a13.chunk.js",
+    "static/js/3.9e4d3a13.chunk.js.map": "/react-jianshu/static/js/3.9e4d3a13.chunk.js.map",
+    "index.html": "/react-jianshu/index.html",
+    "precache-manifest.0fffd20c4a5af51cd96f02c68f81ce79.js": "/react-jianshu/precache-manifest.0fffd20c4a5af51cd96f02c68f81ce79.js",
+    "service-worker.js": "/react-jianshu/service-worker.js"
+  }
+}
